@@ -1,2 +1,2 @@
-# mylocal_service
-Backend server for mylocal ui
+# mylocal_server
+Backend service for mylocal ui

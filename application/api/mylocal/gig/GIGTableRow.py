@@ -1,4 +1,5 @@
 from utils import String
+import json
 
 IGNORE_KEYS = ['entity_id', 'total_population']
 
@@ -59,3 +60,6 @@ class GIGTableRow:
 
     def __repr__(self):
         return self.__str__()
+
+    def to_json(self):
+        return json.dumps({self.id :self.d}, ensure_ascii=False, indent=None)

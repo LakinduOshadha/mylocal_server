@@ -2,13 +2,8 @@ import os
 import tempfile
 import requests
 
-import geopandas as gpd
-from shapely.geometry import MultiPolygon, Polygon
 from utils import WWW, JSONFile
-
 from config import GEO_SERVER_URL
-from application.api.mylocal.gig.EntType import EntType
-
 
 class EntGeoMixin:
     @property
@@ -19,10 +14,21 @@ class EntGeoMixin:
 
         return JSONFile(raw_geo_path)
 
-    @property
+    def get_data(url_remote_geo_data_path: str):
+        response = requests.get(url_remote_geo_data_path)
+        if response.status_code == 200:
+            data = response.json()
+        else:
+            print('API request failed with status code:', response.status_code)
+            data = None
+        return data
+
     def url_remote_geo_data_path(self, endpoint: str):
         id = self.id
         return f'{GEO_SERVER_URL}/{endpoint}/{id}'
+    
+    def url_remote_geo_data_path(attribute, endpoint: str):
+        return f'{GEO_SERVER_URL}/{endpoint}/{attribute}'
 
     def get_raw_geo(self):
         raw_geo_file = self.raw_geo_file
@@ -33,12 +39,9 @@ class EntGeoMixin:
             raw_geo_file.write(raw_geo)
         return raw_geo
 
-    def geo(self):
-        # url = GEO_SERVER_URL + '/region_geo/LK-11'
-        response = requests.get(self.url_remote_geo_data_path('region_geo'))
-        if response.status_code == 200:
-            data = response.json()
-            # Process the response data
-        else:
-            print('API request failed with status code:', response.status_code)
-        return data
+    def geo(region_id):
+        return EntGeoMixin.get_data(EntGeoMixin.url_remote_geo_data_path(attribute = region_id,endpoint='region_geo'))
+    
+    def latlng_to_region(latlng_str):
+        return EntGeoMixin.get_data(EntGeoMixin.url_remote_geo_data_path(attribute =latlng_str , endpoint='latlng_to_region'))
+    

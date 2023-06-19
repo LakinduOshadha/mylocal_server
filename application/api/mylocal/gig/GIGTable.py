@@ -3,7 +3,7 @@ from functools import cached_property
 
 from utils import WWW, FiledVariable
 
-from application.api.mylocal.gig._common import URL_BASE
+from config import CENSUS_BASE_URL
 from application.api.mylocal.gig.GIGTableRow import GIGTableRow
 
 ID_FIELD = 'entity_id'
@@ -27,7 +27,7 @@ class GIGTable:
 
     @property
     def url_remote_data_path(self):
-        return f'{URL_BASE}/gig2/{self.table_id}.tsv'
+        return f'{CENSUS_BASE_URL}/{self.table_id}.tsv'
 
     @cached_property
     def remote_data_list(self) -> list:
@@ -44,3 +44,4 @@ class GIGTable:
 
     def get(self, id):
         return GIGTableRow(self.remote_data_idx[id])
+

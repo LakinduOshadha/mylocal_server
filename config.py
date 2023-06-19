@@ -1,8 +1,12 @@
-ENTS_BASE_URL = 'https://raw.githubusercontent.com/nuuuwan/gig-data/871955832ac095f60eae673d80e4b3fda6aec107'
-CENSUS_BASE_URL = 'https://raw.githubusercontent.com/nuuuwan/gig-data/master/gig2'
+import os
+from dotenv import load_dotenv
 
-GEO_SERVER_URL = 'https://geo-server.datafoundation.lk'
+load_dotenv()
+ENTS_BASE_URL = os.getenv('ENTS_BASE_URL')
+CENSUS_BASE_URL = os.getenv('CENSUS_BASE_URL')
+GEO_SERVER_URL = os.getenv('GEO_SERVER_URL')
 
-# API settings
-API_HOST = '127.0.0.1'
-API_PORT = 5000
+API_HOST = os.getenv('API_HOST')
+API_PORT = os.getenv('API_PORT')
+
+

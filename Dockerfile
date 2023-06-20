@@ -21,7 +21,7 @@ COPY mylocal_service.py .
 ENV ENTS_BASE_URL=https://raw.githubusercontent.com/LakinduOshadha/mylocal-data/main/ents \
     CENSUS_BASE_URL=https://raw.githubusercontent.com/nuuuwan/gig-data/master/gig2 \
     GEO_SERVER_URL=https://geo-server.datafoundation.lk \
-    API_HOST=127.0.0.1 \
+    API_HOST=0.0.0.0 \
     API_PORT=4000 
 
 COPY config.py .

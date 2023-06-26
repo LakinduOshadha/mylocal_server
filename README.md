@@ -20,3 +20,7 @@ In terminal
     pip install -r requirements.txt
     python mylocal_service.py
 
+
+## API Documentation
+
+[Documentation](https://app.swaggerhub.com/apis-docs/LAKINDUOSHADHA98_1/mylocal-service_backend_for_mylocal/1.0.0)

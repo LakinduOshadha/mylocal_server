@@ -8,5 +8,3 @@ GEO_SERVER_URL = os.getenv('GEO_SERVER_URL')
 
 API_HOST = os.getenv('API_HOST')
 API_PORT = os.getenv('API_PORT')
-
-

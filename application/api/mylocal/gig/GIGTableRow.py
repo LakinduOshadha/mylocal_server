@@ -62,4 +62,12 @@ class GIGTableRow:
         return self.__str__()
 
     def to_json(self):
-        return json.dumps({self.id :self.d}, ensure_ascii=False, indent=None)
+        for key, value in self.d.items():
+            try:
+                self.d[key] = int(value)
+            except ValueError:
+                try:
+                    self.d[key] = float(value)
+                except ValueError:
+                    pass
+        return json.dumps({self.id :self.d})

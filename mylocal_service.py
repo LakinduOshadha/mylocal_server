@@ -10,7 +10,7 @@ cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
 cache.init_app(app)
 
 if __name__ == '__main__':
-    print('Starting mylocal_service on ',API_HOST,':',API_PORT)
+    print('Starting mylocal_service on ', API_HOST, ':', API_PORT)
     serve(app, 
           host= API_HOST,
           port = API_PORT,
